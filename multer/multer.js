@@ -10,16 +10,20 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({
-    storage: storage, fileFilter: (req, file, cb) => {
-        if (
-            file.mimetype === "image/jpg" ||
-            file.mimetype === "image/jpeg" ||
-            file.mimetype === "image/png"
-        ) {
-            cb(null, true);
-        } else {
-            cb(new Error("only jpg,jpeg and png are alowed."))
-        }
+    storage: storage,
+    // fileFilter: (req, file, cb) => {
+    //     if (
+    //         file.mimetype === "image/jpg" ||
+    //         file.mimetype === "image/jpeg" ||
+    //         file.mimetype === "image/png"
+    //     ) {
+    //         cb(null, true);
+    //     } else {
+    //         cb(new Error("only jpg,jpeg and png are alowed."))
+    //     }
+    // }
+    fileFilter: (req, file, cb) => {
+        cb(null, true)
     }
 })
 
